@@ -23,6 +23,9 @@ func Zap() (logger *zap.Logger) {
 
 		cores = append(cores, core)
 	}
-
-	return nil
+	logger = zap.New(zapcore.NewTee(cores...))
+	if global.CONFIG.Zap.ShowLine {
+		logger = logger.WithOptions(zap.AddCaller())
+	}
+	return logger
 }

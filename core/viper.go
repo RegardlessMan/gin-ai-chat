@@ -18,7 +18,7 @@ func Viper(path ...string) *viper.Viper {
 
 	var config string
 
-	if len(path) > 0 {
+	if len(path) == 0 {
 		flag.StringVar(&config, "c", "", "choose config file.")
 		flag.Parse()
 		if config == "" {
