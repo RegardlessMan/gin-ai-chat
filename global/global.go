@@ -2,8 +2,9 @@ package global
 
 import (
 	"awesomeProject/config"
-	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 )
 
 var (
@@ -11,4 +12,5 @@ var (
 	VP            *viper.Viper
 	DB            *gorm.DB
 	ACTIVE_DBNAME *string
+	Log           *zap.Logger
 )

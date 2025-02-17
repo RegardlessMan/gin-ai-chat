@@ -12,7 +12,7 @@ func main() {
 	initialize.OtherInit()
 
 	// zap log initialize
-
+	global.Log = core.Zap()
 	// gorm initialize
 	global.DB = initialize.Gorm()
 	// start a Web Server
