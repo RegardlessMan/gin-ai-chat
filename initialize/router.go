@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"awesomeProject/global"
+	"awesomeProject/router"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
@@ -34,7 +35,7 @@ func Routers() *gin.Engine {
 		Router.Use(gin.Logger())
 	}
 
-	//systemRouter := router.RouterGroupApp.System
+	systemRouter := router.RouterGroupApp.System
 	//exampleRouter := router.RouterGroupApp.Example
 	// 如果想要不使用nginx代理前端网页，可以修改 web/.env.production 下的
 	// VUE_APP_BASE_API = /
@@ -70,6 +71,7 @@ func Routers() *gin.Engine {
 		PrivateGroup.GET("/private/health", func(c *gin.Context) {
 			c.JSON(http.StatusOK, "ok")
 		})
+		systemRouter.InitUserApi(PrivateGroup)
 	}
 
 	//插件路由安装
